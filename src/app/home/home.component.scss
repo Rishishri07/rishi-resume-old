@@ -69,12 +69,20 @@ body {
 }
 
 .soc-box {
-  position: absolute;
+  position: fixed;
   bottom: 1%;
-  width: 100%;
+  width: 20%;
   text-align-last: center;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 426px) {
+    width: 60%;
+  }
+
+  @media (min-width: 427px) and (max-width: 768px){
+    width: 35%;
+  }
 
   .social-media {
     border: 1px solid #3F3F3F;
@@ -165,14 +173,24 @@ mat-sidenav {
   display: block;
   -webkit-tap-highlight-color: transparent;
 }
+::ng-deep .mat-nav-list .mat-list-item {
+  @media (orientation:landscape) {
+    height: 40px !important;
+  }
+}
 
 mat-drawer {
   position: fixed !important;
   top: 0;
   width: 20%;
+  height: 100%;
   background: #202020 !important;
   @media (max-width: 426px) {
-    width: 80%;
+    width: 60%;
+  }
+
+  @media (min-width: 427px) and (max-width: 768px){
+    width: 35%;
   }
 }
 
@@ -189,7 +207,7 @@ mat-grid-list {
 ::ng-deep .mat-drawer-inner-container {
   height: fit-content !important;
   overflow: hidden !important;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .child-container {
@@ -481,7 +499,7 @@ mat-grid-list {
   opacity: 1;
   line-height: 1.3;
   color: #ffffff;
-  top: 65%;
+  top: 70%;
   left: 4%;
 }
 .img-profile-photo-frame {
