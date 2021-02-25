@@ -14,6 +14,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {AnimateOnScrollModule} from 'ng2-animate-on-scroll';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {AnimateOnScrollModule} from 'ng2-animate-on-scroll';
     MatGridListModule,
     MatProgressBarModule,
     RouterModule,
-    AnimateOnScrollModule.forRoot()
+    AnimateOnScrollModule.forRoot(),
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
