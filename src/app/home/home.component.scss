@@ -174,7 +174,7 @@ mat-sidenav {
   -webkit-tap-highlight-color: transparent;
 }
 ::ng-deep .mat-nav-list .mat-list-item {
-  @media(max-height: 640px) and (orientation:landscape) {
+  @media(max-height: 280px) and (orientation:landscape) {
     height: 40px !important;
   }
 }
