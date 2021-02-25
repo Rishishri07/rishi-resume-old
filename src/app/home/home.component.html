@@ -4,8 +4,8 @@
   <mat-drawer #drawer [opened]="screenWidth > 768" [mode]="screenWidth > 768 ? 'side' : 'over'">
     <div class="img-profile-photo-frame">
       <img src="/assets/profile.jpg" class="img-profile-photo">
-      <a mat-icon-button class="btn">
-        <div class="name-cont">
+      <a mat-icon-button class="btn-primary" href="/assets/rishi-resume.pdf">
+        <div class="name-cont" #nameText>
           <span class="name-text">Rishi Shrivastava</span>
         </div>
       </a>
@@ -86,7 +86,7 @@
   </div>
   <button class="navigation-down-btn about-btn" (click)="scrollToView(skills)"><mat-icon class="side-menu-icon icon-size bounce">arrow_forward_ios</mat-icon></button>
 </div>
-<div class="child-container2" style="overflow: auto" #skills>
+<div class="child-container2" style="overflow: auto" [ngStyle]="{'min-height.px': screenHeight}" #skills>
   <h2 class="title-name">Skills</h2>
   <mat-grid-list cols="2" rowHeight="48px" data-aos="fade-up" data-aos-delay="200">
     <mat-grid-tile *ngFor="let s of sk; let i = index">

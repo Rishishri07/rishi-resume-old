@@ -1,13 +1,25 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {interval} from 'rxjs';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
+import {interval, Observable, of, Subject, timer} from 'rxjs';
 import {MatSidenav} from '@angular/material/sidenav';
+import {catchError, switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public isOpened = true;
   public showClose = false;
@@ -28,6 +40,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('skills') skillsElement: ElementRef;
   @ViewChild('workex') workexElement: ElementRef;
   @ViewChild('contact') contactElement: ElementRef;
+  @ViewChild('nameText') nameTextElement: ElementRef;
 
   @ViewChild('drawer', {static: false}) drawer: MatSidenav;
 
@@ -44,13 +57,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
   public screenWidth = 0;
   public screenHeight = 0;
   public menuColor: string;
-
+  public showName = true;
+  private killTrigger: Subject<void> = new Subject();
+  private refreshInterval$ = timer(0, 1500).pipe(
+    takeUntil(this.killTrigger)
+  ).subscribe((datas: any) => {
+      console.log('chala');
+      const name = this.nameTextElement.nativeElement;
+      if (name && name.innerText === 'Rishi Shrivastava') {
+        name.innerHTML = `<span data-aos="fade-right" class="name-text" style="color: #FFDF6C">Download CV</span>`;
+      } else {
+        name.innerHTML = `<span data-aos="fade-right" class="name-text" style="color: #FFDF6C">Rishi Shrivastava</span>`;
+      }
+  });
   constructor(private renderer: Renderer2) {
     this.startTimer(10);
     this.screenWidth = window.innerWidth;
     this.screenHeight = window.innerHeight;
   }
-  public startTimer(seconds: number) {
+  public startTimer(seconds: number): void {
     const time = seconds;
     const timer$ = interval(1000);
 
@@ -69,7 +94,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   public toggleMenu(event: any): void {
 
   }
-  ngOnInit(): void {  }
+  ngOnInit(): void { const statustext$ = this.refreshInterval$; }
+
+  ngOnDestroy(): void {
+    this.killTrigger.next();
+  }
 
   public close(): void {
     this.drawer.close();

@@ -94,9 +94,10 @@ body {
 .about-btn {
   left: 45% !important;
 }
-.btn {
+.btn-primary {
   width: 100%;
   top: 2%;
+  border-radius: unset;
 }
 
 .name-cont {
@@ -105,6 +106,13 @@ body {
 
   .name-text {
     color: #FFDF6C;
+  }
+  .cv-text {
+    color: #FFDF6C;
+
+    &:hover {
+      transform: translateY(100%);
+    }
   }
   span {
     color: rgba(255,255,255,.65);
