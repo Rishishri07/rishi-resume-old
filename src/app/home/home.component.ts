@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
@@ -9,15 +8,14 @@ import {
   Renderer2,
   ViewChild
 } from '@angular/core';
-import {interval, Observable, of, Subject, timer} from 'rxjs';
+import {interval, Subject, timer} from 'rxjs';
 import {MatSidenav} from '@angular/material/sidenav';
-import {catchError, switchMap, takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -62,7 +60,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private refreshInterval$ = timer(0, 1500).pipe(
     takeUntil(this.killTrigger)
   ).subscribe((datas: any) => {
-      console.log('chala');
       const name = this.nameTextElement.nativeElement;
       if (name && name.innerText === 'Rishi Shrivastava') {
         name.innerHTML = `<span data-aos="fade-right" class="name-text" style="color: #FFDF6C">Download CV</span>`;
