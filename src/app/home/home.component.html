@@ -1,10 +1,9 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-icon class="menu-btn" [ngClass.lt-md]="menuColor" (click)="drawer.toggle()" aria-label="Side nav toggle icon">menu</mat-icon>
-    <!--<mat-icon *ngIf="isExpanded" aria-label="Side nav toggle icon">close</mat-icon>-->
   <mat-drawer #drawer [opened]="screenWidth > 768" [mode]="screenWidth > 768 ? 'side' : 'over'">
     <div class="img-profile-photo-frame">
       <img src="/assets/profile.jpg" class="img-profile-photo">
-      <a mat-icon-button class="btn-primary" href="/assets/rishi-resume.pdf">
+      <a mat-icon-button class="btn-primary" href="/assets/rishi-resume.pdf" target="_blank">
         <div class="name-cont" #nameText>
           <span class="name-text">Rishi Shrivastava</span>
         </div>

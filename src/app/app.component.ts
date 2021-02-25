@@ -34,9 +34,6 @@ export class AppComponent implements OnInit{
     if (event instanceof NavigationError) {
       this.showOverlay = false;
     }
-    // $(document).on('load', () => {
-    //   this.showOverlay = false;
-    // });
   }
   ngOnInit(): void {
     AOS.init();
