@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     { name: 'Visual Studio Code ', level: 95 }, { name: 'Restful Web services ', level: 80 },
     { name: 'Micro Services ', level: 70 }, { name: 'Jenkins', level: 60 },
     { name: 'Postman', level: 90 }, { name: 'Redux', level: 90 }, { name: 'Agile', level: 90 },
-    { name: 'Intellij', level: 90 }, {name: 'SonarQube', level: 70}
+    { name: 'Intellij', level: 90 }, {name: 'SonarQube', level: 70}, {name: 'Heroku', level: 70}
   ];
   @ViewChild('home') homeElement: ElementRef;
   @ViewChild('about') aboutElement: ElementRef;
